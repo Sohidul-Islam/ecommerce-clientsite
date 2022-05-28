@@ -3,9 +3,12 @@ import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import "./Shop.css";
 import { addToDb, deleteShoppingCart, getItemFromLocalDb } from '../../utilities/fakedb';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+    const [searchData, setSearchData] = useState([]);
     const handleAddtoCart = (product) => {
         // console.log(product);
         const newProduct = [...cart, product];
@@ -18,6 +21,7 @@ const Shop = () => {
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
+                setSearchData(data)
                 console.log("Product Recieved");
             })
 
@@ -51,15 +55,30 @@ const Shop = () => {
         const newCart = [];
         setCart(newCart);
     }
+
+    const handleSearchBar = (e) => {
+        const searchText = e.target.value;
+        console.log(searchText);
+        const searchedProducts = products.filter(product => product.name.toLowerCase().includes(searchText.toLowerCase()));
+        setSearchData(searchedProducts)
+        console.log(searchedProducts.length);
+    }
     return (
-        <div className="shop-container">
-            <div className="product-container">
-                <h2>Products: {products.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product.id} product={product}></Product>)}</h2>
+        <div>
+            <div className="search-container">
+                <input onChange={handleSearchBar} className="searchbar" type="text" placeholder="Search here" />
+                <span style={{ color: "white", marginLeft: "16px" }}><FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>{cart.length}</span>
             </div>
-            <div className="cart-container">
-                <Cart purchase={purchase} cart={cart}></Cart>
+            <div className="shop-container">
+                <div className="product-container">
+                    <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product.id} product={product}></Product>)}</h2>
+                </div>
+                <div className="cart-container">
+                    <Cart purchase={purchase} cart={cart}></Cart>
+                </div>
             </div>
         </div>
+
     );
 };
 
