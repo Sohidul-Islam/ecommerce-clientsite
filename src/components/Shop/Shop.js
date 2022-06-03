@@ -5,6 +5,7 @@ import "./Shop.css";
 import { addToDb, deleteShoppingCart, getItemFromLocalDb } from '../../utilities/fakedb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import UseCart from '../../Hooks/UseCart';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
@@ -15,25 +16,27 @@ const Shop = () => {
         setCart(newProduct);
         addToDb(product.id)
     }
+
     useEffect(() => {
-        console.log("useEffect 1 ");
+        // console.log("useEffect 1 ");
         fetch("./products.json")
             .then(res => res.json())
             .then(data => {
                 setProducts(data)
                 setSearchData(data)
-                console.log("Product Recieved");
+                // console.log("Product Recieved");
+
             })
 
-        console.log(products);
+        // console.log(products);
     }, []);
 
     useEffect(() => {
-        console.log("useEffect 2 ");
+        // console.log("useEffect 2 ");
         const newCart = [];
         if (products.length) {
             const addedProducts = getItemFromLocalDb();
-            console.log(addedProducts);
+            // console.log(addedProducts);
             for (const id in addedProducts) {
                 const quantity = addedProducts[id];
                 const savedProduct = products.find(product => product.id === id);
@@ -41,11 +44,12 @@ const Shop = () => {
                 for (let i = 0; i < quantity; i++) {
                     newCart.push(savedProduct);
                 }
-                console.log("Quantity: ", quantity);
-                console.log("saved product: ", savedProduct);
+                // console.log("Quantity: ", quantity);
+                // console.log("saved product: ", savedProduct);
+
             }
 
-            console.log("New cart: ", newCart);
+            // console.log("New cart: ", newCart);
             setCart(newCart);
         }
 
@@ -58,10 +62,10 @@ const Shop = () => {
 
     const handleSearchBar = (e) => {
         const searchText = e.target.value;
-        console.log(searchText);
+        // console.log(searchText);
         const searchedProducts = products.filter(product => product.name.toLowerCase().includes(searchText.toLowerCase()));
         setSearchData(searchedProducts)
-        console.log(searchedProducts.length);
+        // console.log(searchedProducts.length);
     }
     return (
         <div>
