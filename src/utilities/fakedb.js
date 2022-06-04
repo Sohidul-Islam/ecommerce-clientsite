@@ -13,9 +13,11 @@ const addToDb = id => {
     if (quantity) {
         const newQuantity = quantity + 1;
         shoppingCart[id] = newQuantity;
+        console.log("shopping cart quantity is ", newQuantity, " here");
     }
     else {
         shoppingCart[id] = 1;
+        console.log("shopping cart quantity is 1 here");
     }
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 }

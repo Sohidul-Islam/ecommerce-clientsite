@@ -19,7 +19,7 @@ const OrderReview = () => {
         <div>
             <div className="shop-container">
                 <div className="product-container">
-                    {cart.map(product => <ReviewItem remove={removeHandler} product={product}></ReviewItem>)}
+                    {cart.length ? cart.map(product => <ReviewItem key={product.id} remove={removeHandler} product={product}></ReviewItem>) : <h2>Not Item Found</h2>}
                 </div>
                 <div className="cart-container">
                     <Cart cart={cart}></Cart>

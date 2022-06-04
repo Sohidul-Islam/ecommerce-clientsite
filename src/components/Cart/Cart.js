@@ -7,12 +7,9 @@ const Cart = (props) => {
     const shipping = total > 0 ? 55 : 0;
     const tax = (total + shipping) * .15;
     const grandTotal = total + shipping + tax;
-    let TotalQuantity = cart.reduce((previous, current) => previous + current.quantity, 0);
-    console.log("Total: ", total);
-    console.log("shipping: ", shipping);
-    console.log("tax: ", tax);
-    console.log("grandTotal: ", grandTotal);
-    console.log("TotalQuantity: ", TotalQuantity);
+    let TotalQuantity = cart.reduce((previous, current) => {
+        return previous + current.quantity
+    }, 0);
     return (
         <div>
             <h2><strong>Order Summery</strong></h2>

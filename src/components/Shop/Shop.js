@@ -11,6 +11,7 @@ const Shop = () => {
     const [searchData, setSearchData] = useState([]);
     const handleAddtoCart = (product) => {
         // console.log(product);
+        product.quantity = 1;
         const newProduct = [...cart, product];
         setCart(newProduct);
         addToDb(product.id)
@@ -41,6 +42,7 @@ const Shop = () => {
                 const savedProduct = products.find(product => product.id === id);
 
                 savedProduct.quantity = quantity;
+                console.log("Saved product quantity: ", quantity);
                 newCart.push(savedProduct);
 
                 // console.log("Quantity: ", quantity);
@@ -48,7 +50,7 @@ const Shop = () => {
 
             }
 
-            // console.log("New cart: ", newCart);
+            console.log("New cart: ", newCart);
             setCart(newCart);
         }
 
@@ -70,7 +72,7 @@ const Shop = () => {
         <div>
             <div className="search-container">
                 <input onChange={handleSearchBar} className="searchbar" type="text" placeholder="Search here" />
-                <span style={{ color: "white", marginLeft: "16px" }}><FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>{cart.length}</span>
+                <span style={{ color: "white", marginLeft: "16px" }}><FontAwesomeIcon icon={faCartShopping}></FontAwesomeIcon>{cart.reduce((previous, current) => previous + current.quantity, 0)}</span>
             </div>
             <div className="shop-container">
                 <div className="product-container">
