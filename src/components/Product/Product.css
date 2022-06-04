@@ -10,7 +10,7 @@
 .product-details {
   margin-left: 8px;
 }
-.product-details h2 {
+.product-details .product-name {
   color: blue;
 }
 .btn-regular {

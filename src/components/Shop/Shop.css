@@ -61,3 +61,10 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .shop-container {
+    grid-template-columns: 1fr;
+    margin: 0px 5%;
+  }
+}

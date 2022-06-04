@@ -5,7 +5,6 @@ import "./Shop.css";
 import { addToDb, deleteShoppingCart, getItemFromLocalDb } from '../../utilities/fakedb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import UseCart from '../../Hooks/UseCart';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
@@ -41,9 +40,9 @@ const Shop = () => {
                 const quantity = addedProducts[id];
                 const savedProduct = products.find(product => product.id === id);
 
-                for (let i = 0; i < quantity; i++) {
-                    newCart.push(savedProduct);
-                }
+                savedProduct.quantity = quantity;
+                newCart.push(savedProduct);
+
                 // console.log("Quantity: ", quantity);
                 // console.log("saved product: ", savedProduct);
 
