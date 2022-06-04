@@ -1,18 +1,18 @@
 .header {
   text-align: center;
 }
-.header nav {
+.navbar {
   background-color: black;
   line-height: 40px;
   text-align: left;
 }
-.header nav a {
+.navbar .nav-link {
   color: white;
   text-decoration: none;
   margin-right: 20px;
   padding: 8px;
 }
-.header nav a:hover {
+.navbar .nav-link:hover {
   color: black;
   background-color: white;
 }

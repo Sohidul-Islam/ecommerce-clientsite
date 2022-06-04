@@ -13,7 +13,7 @@ const Product = (props) => {
             <div className="product-details">
                 <h2 className="product-name">{name}</h2>
                 <p><small>by: {seller}</small></p>
-                <p>by: ${price}</p>
+                <p>Price: ${price}</p>
                 <p><small>only {stock} left in stock - order soon rating: {ratings}</small></p>
 
                 <Rating onChange={(value) => console.log("rating: ", value)} emptySymbol="far fa-star icon-color"

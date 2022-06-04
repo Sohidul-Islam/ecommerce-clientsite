@@ -1,7 +1,7 @@
 import React from 'react';
 import UseCart from '../../Hooks/UseCart';
 import UseProducts from '../../Hooks/UseProducts';
-import { removeFromDb } from '../../utilities/fakedb';
+import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
@@ -15,6 +15,11 @@ const OrderReview = () => {
         setCart(deleteCart);
         removeFromDb(key);
     }
+    const purchase = () => {
+        deleteShoppingCart();
+        const newCart = [];
+        setCart(newCart);
+    }
     return (
         <div>
             <div className="shop-container">
@@ -22,7 +27,9 @@ const OrderReview = () => {
                     {cart.length ? cart.map(product => <ReviewItem key={product.id} remove={removeHandler} product={product}></ReviewItem>) : <h2>Not Item Found</h2>}
                 </div>
                 <div className="cart-container">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <button onClick={purchase} className="btn-regular">Purchase</button>
+                    </Cart>
                 </div>
             </div>
 

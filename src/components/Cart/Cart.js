@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cart = (props) => {
-    // console.log(props.cart);
+    console.log(props);
     const { cart, purchase } = props;
     const total = cart.reduce((previous, current) => previous + current.price, 0)
     const shipping = total > 0 ? 55 : 0;
@@ -20,6 +20,7 @@ const Cart = (props) => {
             <p><strong>Tax:</strong> {tax.toFixed(2)}</p>
             <p><strong>Grand Total:</strong> {grandTotal.toFixed(2)}</p>
             {purchase && <button onClick={purchase} className="btn-regular">Purchase</button>}
+            {props.children}
         </div>
     );
 };

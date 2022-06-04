@@ -5,6 +5,7 @@ import "./Shop.css";
 import { addToDb, deleteShoppingCart, getItemFromLocalDb } from '../../utilities/fakedb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
@@ -55,11 +56,7 @@ const Shop = () => {
         }
 
     }, [products])
-    const purchase = () => {
-        deleteShoppingCart();
-        const newCart = [];
-        setCart(newCart);
-    }
+
 
     const handleSearchBar = (e) => {
         const searchText = e.target.value;
@@ -79,7 +76,11 @@ const Shop = () => {
                     <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product.id} product={product}></Product>)}</h2>
                 </div>
                 <div className="cart-container">
-                    <Cart purchase={purchase} cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <Link to="/order-review">
+                            <button className="btn-regular">Review Your Order</button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </div>
