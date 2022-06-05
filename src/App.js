@@ -6,8 +6,10 @@ import Shop from './components/Shop/Shop';
 import OrderReview from './components/OrderReview/OrderReview';
 import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 
 function App() {
+  console.log("Order: ", OrderReview);
   return (
     <div>
       <Header></Header>
@@ -28,7 +30,8 @@ function App() {
           <Route path="/order-review" element={<OrderReview></OrderReview>}>
 
           </Route>
-          <Route path="/manage-inventory" element={<Inventory></Inventory>}>
+          <Route path="/manage-inventory" element={<Inventory></Inventory>}></Route>
+          <Route path="/placeorder" element={<PlaceOrder></PlaceOrder>}>
 
           </Route>
           <Route path="*" element={<NotFound />}>

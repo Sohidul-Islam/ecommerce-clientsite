@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import "./Shop.css";
-import { addToDb, deleteShoppingCart, getItemFromLocalDb } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getItemFromLocalDb, getItemFromLocalDbByID } from '../../utilities/fakedb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
@@ -12,10 +12,30 @@ const Shop = () => {
     const [searchData, setSearchData] = useState([]);
     const handleAddtoCart = (product) => {
         // console.log(product);
-        product.quantity = 1;
-        const newProduct = [...cart, product];
+        let newProduct = []
+        // if (getItemFromLocalDbByID(product.id)) {
+        //     console.log("ho paisi");
+        //     product.quantity += 1;
+        // } else {
+        //     console.log("nare painai");
+        //     product.quantity = 1;
+        //     newProduct = [...cart, product];
+        // }
+        const exists = cart.find(pd => pd.id === product.id);
+        if (exists) {
+            const rest = cart.filter(pd => pd.id !== product.id);
+            exists.quantity += 1;
+            newProduct = [...rest, exists];
+        }
+        else {
+            product.quantity = 1;
+            newProduct = [...cart, product];
+        }
+
+        console.log("New cart; ", newProduct);
         setCart(newProduct);
         addToDb(product.id)
+
     }
 
     useEffect(() => {

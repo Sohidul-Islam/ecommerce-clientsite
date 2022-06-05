@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cart = (props) => {
-    console.log(props);
+    // console.log(props);
     const { cart, purchase } = props;
     const total = cart.reduce((previous, current) => previous + current.price, 0)
     const shipping = total > 0 ? 55 : 0;

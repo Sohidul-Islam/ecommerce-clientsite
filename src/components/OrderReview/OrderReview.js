@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import UseCart from '../../Hooks/UseCart';
 import UseProducts from '../../Hooks/UseProducts';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
@@ -8,6 +9,7 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 const OrderReview = () => {
     const [products, setProducts] = UseProducts([]);
     const [cart, setCart] = UseCart(products);
+    const navigate = useNavigate();
     const removeHandler = (key) => {
         // console.log("Deleted key: ", key);
         const deleteCart = cart.filter(product => product.id !== key);
@@ -16,9 +18,13 @@ const OrderReview = () => {
         removeFromDb(key);
     }
     const purchase = () => {
-        deleteShoppingCart();
-        const newCart = [];
-        setCart(newCart);
+        if (cart.length > 0) {
+            deleteShoppingCart();
+            const newCart = [];
+            setCart(newCart);
+            navigate("/placeorder")
+        }
+
     }
     return (
         <div>
