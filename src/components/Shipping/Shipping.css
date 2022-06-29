@@ -1,0 +1,28 @@
+.shipping-form {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shipping-form input {
+  width: 70vw;
+  margin: 0 15vw;
+  border: 1px solid #ccc;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.shipping-form input[type="submit"] {
+  border: none;
+  background-color: #f0c14b;
+}
+
+.error {
+  color: red;
+  width: 50vw;
+  margin: 0 25vw;
+  font-size: 12px;
+}

@@ -1,6 +1,5 @@
-import React from 'react';
 import { useEffect } from 'react';
-import { Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 
 const PrivateRouter = ({ children, ...rest }) => {
@@ -18,9 +17,6 @@ const PrivateRouter = ({ children, ...rest }) => {
     if (user?.email) {
         return children;
     }
-
-
-    // return <Navigate to="/login" replace={true}></Navigate>
 };
 
 export default PrivateRouter;
