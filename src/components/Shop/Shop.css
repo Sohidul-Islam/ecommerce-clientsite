@@ -67,7 +67,8 @@
     grid-template-columns: 1fr;
   }
   .product-container {
-    margin-right: 0;
+    margin-right: 10vw;
+    margin-left: 10vw;
     border-right: none;
   }
 }

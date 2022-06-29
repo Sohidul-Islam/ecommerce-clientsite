@@ -36,6 +36,7 @@
     align-items: center;
     font-size: 12px;
     padding: 40px 0px;
+    margin-right: 0px;
     border-bottom: 1px solid lightgrey;
   }
   .product img {

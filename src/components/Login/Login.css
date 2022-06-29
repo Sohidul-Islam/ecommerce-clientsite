@@ -2,10 +2,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
 }
 
 .login-form-container {
   padding: 40px;
   border-radius: 16px;
   border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 480px) {
+  #form-box {
+    margin: 10vh 5vw;
+  }
+  .login-form-container {
+    padding: 20px;
+  }
 }
