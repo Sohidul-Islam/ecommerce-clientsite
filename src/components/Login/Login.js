@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./Login.css";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 const Login = () => {
     const { user, signInWithGoogle } = useAuth();
+    const location = useLocation();
+    console.log("Location: ", location);
+    const navigate = useNavigate();
+    useEffect(() => {
+        console.log("ami log iner use effecte achei");
+        if (user.email && location.state?.from) {
+            navigate(`${location.state?.from}`, {
+                state: { from: location.pathname }
+            })
+        }
+    }, [user])
     return (
         <div id="form-box">
             <div className="login-form-container">

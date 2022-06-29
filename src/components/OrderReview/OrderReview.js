@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import UseCart from '../../Hooks/UseCart';
 import UseProducts from '../../Hooks/UseProducts';
@@ -10,6 +10,7 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 const OrderReview = () => {
     const [products, setProducts] = UseProducts([]);
     const [cart, setCart] = UseCart(products);
+    const location = useLocation();
     const navigate = useNavigate();
     const { user } = useAuth()
     const removeHandler = (key) => {
@@ -25,11 +26,16 @@ const OrderReview = () => {
                 deleteShoppingCart();
                 const newCart = [];
                 setCart(newCart);
-                navigate("/placeorder")
-            } else {
-                navigate("/login")
+
             }
+            const tmepLocation = location.pathname;
+            console.log("state from tmepLocation", tmepLocation);
+            navigate("/placeorder", {
+                state: { from: tmepLocation }
+            })
         }
+
+
     }
     return (
         <div>
