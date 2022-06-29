@@ -22,17 +22,10 @@ const OrderReview = () => {
     }
     const purchase = () => {
         if (cart.length > 0) {
-            if (user?.email) {
-                deleteShoppingCart();
-                const newCart = [];
-                setCart(newCart);
-
-            }
-            const tmepLocation = location.pathname;
-            console.log("state from tmepLocation", tmepLocation);
-            navigate("/placeorder", {
-                state: { from: tmepLocation }
-            })
+            navigate("/placeorder", { replace: true });
+            deleteShoppingCart();
+            const newCart = [];
+            setCart(newCart);
         }
 
 

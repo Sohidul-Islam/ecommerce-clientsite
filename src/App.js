@@ -23,7 +23,9 @@ function App() {
           <Route path="/order-review" element={<OrderReview></OrderReview>}>
           </Route>
           <Route path="/manage-inventory" element={<Inventory></Inventory>}></Route>
-          <Route path="/placeorder" element={<PlaceOrder></PlaceOrder>}></Route>
+          <Route path="/placeorder" element={<PrivateRouter>
+            <PlaceOrder></PlaceOrder></PrivateRouter>
+          }></Route>
           <Route path="/login" element={<Login></Login>}>
           </Route>
           <Route path="/register" element={<Register></Register>}>
