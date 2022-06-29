@@ -71,4 +71,8 @@
     margin-left: 10vw;
     border-right: none;
   }
+  .cart-container {
+    margin-right: 10vw;
+    margin-left: 10vw;
+  }
 }
