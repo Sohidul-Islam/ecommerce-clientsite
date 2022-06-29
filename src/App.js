@@ -10,6 +10,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import AuthProvider from './context/AuthProvider';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
+import Shipping from './components/Shipping/Shipping';
 function App() {
   return (
     <AuthProvider>
@@ -22,9 +23,13 @@ function App() {
           </Route>
           <Route path="/order-review" element={<OrderReview></OrderReview>}>
           </Route>
-          <Route path="/manage-inventory" element={<Inventory></Inventory>}></Route>
+          <Route path="/manage-inventory" element={<PrivateRouter><Inventory></Inventory></PrivateRouter>}></Route>
           <Route path="/placeorder" element={<PrivateRouter>
             <PlaceOrder></PlaceOrder></PrivateRouter>
+          }></Route>
+          <Route path="/shipping" element={<PrivateRouter>
+            <Shipping></Shipping>
+          </PrivateRouter>
           }></Route>
           <Route path="/login" element={<Login></Login>}>
           </Route>

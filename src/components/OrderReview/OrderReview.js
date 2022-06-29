@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import UseCart from '../../Hooks/UseCart';
 import UseProducts from '../../Hooks/UseProducts';
@@ -22,10 +22,11 @@ const OrderReview = () => {
     }
     const purchase = () => {
         if (cart.length > 0) {
-            navigate("/placeorder", { replace: true });
-            deleteShoppingCart();
-            const newCart = [];
-            setCart(newCart);
+            // navigate("/placeorder", { replace: true });
+            navigate("/shipping", { replace: true });
+            // deleteShoppingCart();
+            // const newCart = [];
+            // setCart(newCart);
         }
 
 
@@ -39,6 +40,8 @@ const OrderReview = () => {
                 <div className="cart-container">
                     <Cart cart={cart}>
                         <button onClick={purchase} className="btn-regular">Purchase</button>
+                        <br />
+                        {cart.length == 0 && <Link to="/" className="text-danger"><h5>Please Choose Your Item</h5></Link>}
                     </Cart>
                 </div>
             </div>
