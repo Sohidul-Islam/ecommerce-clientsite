@@ -1,0 +1,11 @@
+#form-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form-container {
+  padding: 40px;
+  border-radius: 16px;
+  border: 1px solid #ccc;
+}

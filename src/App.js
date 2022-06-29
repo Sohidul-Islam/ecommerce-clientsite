@@ -1,25 +1,20 @@
-
 import './App.css';
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Shop from './components/Shop/Shop';
 import OrderReview from './components/OrderReview/OrderReview';
 import Inventory from './components/Inventory/Inventory';
 import NotFound from './components/NotFound/NotFound';
 import PlaceOrder from './components/PlaceOrder/PlaceOrder';
+import Login from './components/Login/Login';
+import Register from './components/Register/Register';
 
 function App() {
-  console.log("Order: ", OrderReview);
+  // console.log("Order: ", OrderReview);
   return (
     <div>
-      <Header></Header>
-
       <BrowserRouter>
-        <div className="navbar">
-          <Link className="nav-link" to="/shop">Shop</Link>
-          <Link className="nav-link" to="/order-review">Order Review</Link>
-          <Link className="nav-link" to="/manage-inventory">Manage Inventory here</Link>
-        </div>
+        <Header></Header>
         <Routes>
           <Route exact path="/" element={<Shop></Shop>}>
 
@@ -31,7 +26,11 @@ function App() {
 
           </Route>
           <Route path="/manage-inventory" element={<Inventory></Inventory>}></Route>
-          <Route path="/placeorder" element={<PlaceOrder></PlaceOrder>}>
+          <Route path="/placeorder" element={<PlaceOrder></PlaceOrder>}></Route>
+          <Route path="/login" element={<Login></Login>}>
+
+          </Route>
+          <Route path="/register" element={<Register></Register>}>
 
           </Route>
           <Route path="*" element={<NotFound />}>

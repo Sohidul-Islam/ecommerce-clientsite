@@ -1,21 +1,7 @@
 .header {
   text-align: center;
 }
-.navbar {
-  background-color: black;
-  line-height: 40px;
-  text-align: left;
-}
-.navbar .nav-link {
-  color: white;
-  text-decoration: none;
-  margin-right: 20px;
-  padding: 8px;
-}
-.navbar .nav-link:hover {
-  color: black;
-  background-color: white;
-}
+
 .logo {
   height: 50px;
 }
