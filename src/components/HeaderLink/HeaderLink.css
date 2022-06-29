@@ -17,3 +17,16 @@
   color: black;
   background-color: white;
 }
+
+@media screen and (max-width: 480px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+  }
+  .navbar .nav-link {
+    margin-right: 0;
+    padding: 4px 8px;
+    border-radius: 5px;
+  }
+}
