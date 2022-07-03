@@ -12,6 +12,7 @@ const Shop = () => {
     const [searchData, setSearchData] = useState([]);
     const [pageNumber, setPageNumber] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
+    const size = 10;
     const handleAddtoCart = (product) => {
         // console.log(product);
         let newProduct = []
@@ -39,7 +40,7 @@ const Shop = () => {
     }
 
     useEffect(() => {
-        fetch("http://localhost:5000/products")
+        fetch(`http://localhost:5000/products?page=${currentPage}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
                 console.log("Product Recieved", data);
@@ -47,7 +48,7 @@ const Shop = () => {
                 setSearchData(data.products)
                 console.log("Product Recieved");
                 const count = data.count;
-                const page = Math.ceil(count / 10);
+                const page = Math.ceil(count / size);
                 console.log("page", page);
                 setPageNumber(page);
 
