@@ -83,7 +83,7 @@
   margin-top: 20px;
   margin: 20px 0px;
 }
-.pagination button {
+.pagination .not-selected {
   background-color: #14213d;
   color: #fff;
   border: none;
@@ -93,8 +93,16 @@
   cursor: pointer;
   transition: all 0.2s ease-in-out;
 }
-.pagination button:hover {
+.pagination .not-selected:hover {
   background-color: #fff;
   color: #14213d;
+  box-shadow: 0px 0px 5px #14213d;
+}
+.pagination .selected {
+  background-color: #fff;
+  color: #14213d;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
   box-shadow: 0px 0px 5px #14213d;
 }

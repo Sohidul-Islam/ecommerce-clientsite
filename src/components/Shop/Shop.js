@@ -89,7 +89,8 @@ const Shop = () => {
                     <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product._id} product={product}></Product>)}</h2>
 
                     <div className="pagination">
-                        {[...Array(pageNumber).keys()].map(num => <button style={{ marginRight: "8px" }}>{num}</button>
+                        {[...Array(pageNumber).keys()].map(num => <button
+                            className={currentPage === num ? "selected" : "not-selected"} onClick={() => setCurrentPage(num)} style={{ marginRight: "8px" }}>{num}</button>
                         )}
                     </div>
                 </div>
