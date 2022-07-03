@@ -53,7 +53,7 @@ const Shop = () => {
                 setPageNumber(page);
 
             })
-    }, []);
+    }, [currentPage]);
 
     useEffect(() => {
         const newCart = [];
