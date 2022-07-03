@@ -3,16 +3,20 @@ import React, { useEffect, useState } from 'react';
 const UseProducts = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
-        fetch("./products.json")
+        getProducts();
+    }, [])
+
+    const getProducts = async () => {
+        await fetch("http://localhost:5000/products")
             .then(res => res.json())
             .then(data => {
-                setProducts(data);
-                console.log("Product Recieved");
+                setProducts(data.products);
+
+                // console.log("Product Recieved useProducts", data.products);
             })
-    }, [])
-    return (
-        [products]
-    );
+    }
+    return [products, setProducts]
+
 };
 
 export default UseProducts;

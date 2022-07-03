@@ -10,6 +10,8 @@ const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [searchData, setSearchData] = useState([]);
+    const [pageNumber, setPageNumber] = useState([]);
+    const [currentPage, setCurrentPage] = useState(0);
     const handleAddtoCart = (product) => {
         // console.log(product);
         let newProduct = []
@@ -21,9 +23,9 @@ const Shop = () => {
         //     product.quantity = 1;
         //     newProduct = [...cart, product];
         // }
-        const exists = cart.find(pd => pd.id === product.id);
+        const exists = cart.find(pd => pd._id === product._id);
         if (exists) {
-            const rest = cart.filter(pd => pd.id !== product.id);
+            const rest = cart.filter(pd => pd._id !== product._id);
             exists.quantity += 1;
             newProduct = [...rest, exists];
         }
@@ -31,44 +33,36 @@ const Shop = () => {
             product.quantity = 1;
             newProduct = [...cart, product];
         }
-
-        console.log("New cart; ", newProduct);
         setCart(newProduct);
-        addToDb(product.id)
+        addToDb(product._id)
 
     }
 
     useEffect(() => {
-        // console.log("useEffect 1 ");
-        fetch("./products.json")
+        fetch("http://localhost:5000/products")
             .then(res => res.json())
             .then(data => {
-                setProducts(data)
-                setSearchData(data)
-                // console.log("Product Recieved");
+                console.log("Product Recieved", data);
+                setProducts(data.products)
+                setSearchData(data.products)
+                console.log("Product Recieved");
+                const count = data.count;
+                const page = Math.ceil(count / 10);
+                console.log("page", page);
+                setPageNumber(page);
 
             })
-
-        // console.log(products);
     }, []);
 
     useEffect(() => {
-        // console.log("useEffect 2 ");
         const newCart = [];
         if (products.length) {
             const addedProducts = getItemFromLocalDb();
-            // console.log(addedProducts);
             for (const id in addedProducts) {
                 const quantity = addedProducts[id];
-                const savedProduct = products.find(product => product.id === id);
-
+                const savedProduct = products.find(product => product._id === id);
                 savedProduct.quantity = quantity;
-                console.log("Saved product quantity: ", quantity);
                 newCart.push(savedProduct);
-
-                // console.log("Quantity: ", quantity);
-                // console.log("saved product: ", savedProduct);
-
             }
 
             console.log("New cart: ", newCart);
@@ -83,7 +77,6 @@ const Shop = () => {
         // console.log(searchText);
         const searchedProducts = products.filter(product => product.name.toLowerCase().includes(searchText.toLowerCase()));
         setSearchData(searchedProducts)
-        // console.log(searchedProducts.length);
     }
     return (
         <div>
@@ -93,7 +86,12 @@ const Shop = () => {
             </div>
             <div className="shop-container">
                 <div className="product-container">
-                    <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product.id} product={product}></Product>)}</h2>
+                    <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product._id} product={product}></Product>)}</h2>
+
+                    <div className="pagination">
+                        {[...Array(pageNumber).keys()].map(num => <button style={{ marginRight: "8px" }}>{num}</button>
+                        )}
+                    </div>
                 </div>
                 <div className="cart-container">
                     <Cart cart={cart}>

@@ -6,17 +6,18 @@ import UseProducts from '../../Hooks/UseProducts';
 import { deleteShoppingCart, removeFromDb } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import ReviewItem from '../ReviewItem/ReviewItem';
+import useProductsContext from './../../Hooks/useProductContext';
 
 const OrderReview = () => {
-    const [products, setProducts] = UseProducts([]);
+    const [products] = useProductsContext();
     const [cart, setCart] = UseCart(products);
-    const location = useLocation();
+    // const location = useLocation();
     const navigate = useNavigate();
-    const { user } = useAuth()
+    const { user } = useAuth();
+    console.log("Cart in order review ", cart);
+    // console.log("Products in order review ", useProductsContext());
     const removeHandler = (key) => {
-        // console.log("Deleted key: ", key);
-        const deleteCart = cart.filter(product => product.id !== key);
-        // console.log("new cart: ", deleteCart);
+        const deleteCart = cart.filter(product => product._id !== key);
         setCart(deleteCart);
         removeFromDb(key);
     }
@@ -35,7 +36,7 @@ const OrderReview = () => {
         <div>
             <div className="shop-container">
                 <div className="product-container">
-                    {cart.length ? cart.map(product => <ReviewItem key={product.id} remove={removeHandler} product={product}></ReviewItem>) : <h2>Not Item Found</h2>}
+                    {cart.length ? cart.map(product => <ReviewItem key={product._id} remove={removeHandler} product={product}></ReviewItem>) : <h2>Not Item Found</h2>}
                 </div>
                 <div className="cart-container">
                     <Cart cart={cart}>

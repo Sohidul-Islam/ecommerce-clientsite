@@ -11,35 +11,38 @@ import Register from './components/Register/Register';
 import AuthProvider from './context/AuthProvider';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import Shipping from './components/Shipping/Shipping';
+import ProductsProvider from './context/ProductsProvider';
 function App() {
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route exact path="/" element={<Shop></Shop>}>
-          </Route>
-          <Route path="/shop" element={<Shop></Shop>}>
-          </Route>
-          <Route path="/order-review" element={<OrderReview></OrderReview>}>
-          </Route>
-          <Route path="/manage-inventory" element={<PrivateRouter><Inventory></Inventory></PrivateRouter>}></Route>
-          <Route path="/placeorder" element={<PrivateRouter>
-            <PlaceOrder></PlaceOrder></PrivateRouter>
-          }></Route>
-          <Route path="/shipping" element={<PrivateRouter>
-            <Shipping></Shipping>
-          </PrivateRouter>
-          }></Route>
-          <Route path="/login" element={<Login></Login>}>
-          </Route>
-          <Route path="/register" element={<Register></Register>}>
-          </Route>
-          <Route path="*" element={<NotFound />}>
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AuthProvider>
+    <ProductsProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <Header></Header>
+          <Routes>
+            <Route exact path="/" element={<Shop></Shop>}>
+            </Route>
+            <Route path="/shop" element={<Shop></Shop>}>
+            </Route>
+            <Route path="/order-review" element={<OrderReview></OrderReview>}>
+            </Route>
+            <Route path="/manage-inventory" element={<PrivateRouter><Inventory></Inventory></PrivateRouter>}></Route>
+            <Route path="/placeorder" element={<PrivateRouter>
+              <PlaceOrder></PlaceOrder></PrivateRouter>
+            }></Route>
+            <Route path="/shipping" element={<PrivateRouter>
+              <Shipping></Shipping>
+            </PrivateRouter>
+            }></Route>
+            <Route path="/login" element={<Login></Login>}>
+            </Route>
+            <Route path="/register" element={<Register></Register>}>
+            </Route>
+            <Route path="*" element={<NotFound />}>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </ProductsProvider>
   );
 }
 export default App;

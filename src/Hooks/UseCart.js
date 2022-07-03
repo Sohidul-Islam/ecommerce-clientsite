@@ -9,14 +9,12 @@ const UseCart = (products) => {
 
         if (products.length) {
             const addedProducts = getItemFromLocalDb();
-            // console.log("from useCart", addedProducts, " and products ", products);
             let newCart = [];
             for (const id in addedProducts) {
-                // console.log("ids in useCart", id);
                 const quantity = addedProducts[id];
-                const savedProduct = products.find(product => product.id === id);
-                // console.log("savedProduct: ", savedProduct);
-
+                const savedProduct = products.find(product => product._id === id);
+                console.log("Saved product quantity: ", quantity);
+                console.log("Saved product: ", savedProduct);
                 if (savedProduct) {
                     savedProduct.quantity = quantity;
                     newCart.push(savedProduct);
