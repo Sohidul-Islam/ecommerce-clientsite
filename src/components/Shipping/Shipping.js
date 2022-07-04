@@ -12,7 +12,7 @@ const Shipping = () => {
         data.order = savedItems;
         console.log("shipping: ", data)
 
-        fetch("https://rugged-hot-springs-18854.herokuapp.com/products/order", {
+        fetch("https://marvelous-dry-tortugas-02221.herokuapp.com/products/order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
