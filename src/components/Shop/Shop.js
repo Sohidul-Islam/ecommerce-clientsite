@@ -98,13 +98,19 @@ const Shop = () => {
             </div>
             <div className="shop-container">
                 <div className="product-container">
-                    <h2>Products: {searchData.length > 0 && searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product._id} product={product}></Product>)}</h2>
+                    {searchData.length > 0 ? <>
+                        <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product._id} product={product}></Product>)}</h2>
 
-                    <div className="pagination">
-                        {[...Array(pageNumber).keys()].map(num => <button key={num}
-                            className={currentPage === num ? "selected" : "not-selected"} onClick={() => setCurrentPage(num)} style={{ marginRight: "8px" }}>{num}</button>
-                        )}
-                    </div>
+                        <div className="pagination">
+                            {[...Array(pageNumber).keys()].map(num => <button key={num}
+                                className={currentPage === num ? "selected" : "not-selected"} onClick={() => setCurrentPage(num)} style={{ marginRight: "8px" }}>{num}</button>
+                            )}
+                        </div>
+                    </> :
+                        <div className="spinner-grow" style={{ width: "10rem", height: "10rem", margin: "25% 25%" }} role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    }
                 </div>
                 <div className="cart-container">
                     <Cart cart={cart}>
