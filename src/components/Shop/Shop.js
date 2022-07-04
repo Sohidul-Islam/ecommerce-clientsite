@@ -61,22 +61,22 @@ const Shop = () => {
             })
     }, [currentPage]);
 
-    useEffect(() => {
-        const newCart = [];
-        if (products.length) {
-            const addedProducts = getItemFromLocalDb();
-            for (const id in addedProducts) {
-                const quantity = addedProducts[id];
-                const savedProduct = products.find(product => product._id === id);
-                savedProduct.quantity = quantity;
-                newCart.push(savedProduct);
-            }
+    // useEffect(() => {
+    //     const newCart = [];
+    //     if (products.length) {
+    //         const addedProducts = getItemFromLocalDb();
+    //         for (const id in addedProducts) {
+    //             const quantity = addedProducts[id];
+    //             const savedProduct = products.find(product => product._id === id);
+    //             savedProduct.quantity = quantity;
+    //             newCart.push(savedProduct);
+    //         }
 
-            console.log("New cart: ", newCart);
-            setCart(newCart);
-        }
+    //         console.log("New cart: ", newCart);
+    //         setCart(newCart);
+    //     }
 
-    }, [])
+    // }, [])
 
 
     const handleSearchBar = (e) => {
