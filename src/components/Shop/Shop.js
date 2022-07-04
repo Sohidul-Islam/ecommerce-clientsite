@@ -6,9 +6,10 @@ import { addToDb, deleteShoppingCart, getItemFromLocalDb, getItemFromLocalDbByID
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import UseCart from './../../Hooks/UseCart';
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = UseCart(products);
     const [searchData, setSearchData] = useState([]);
     const [pageNumber, setPageNumber] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
@@ -40,18 +41,23 @@ const Shop = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?page=${currentPage}&&size=${size}`)
+        const url = `http://localhost:5000/products?page=${currentPage}&&size=${size}`;
+
+        console.log(url);
+        fetch(url)
             .then(res => res.json())
             .then(data => {
                 console.log("Product Recieved", data);
-                setProducts(data.products)
                 setSearchData(data.products)
+                setProducts(data.products)
                 console.log("Product Recieved");
                 const count = data.count;
                 const page = Math.ceil(count / size);
                 console.log("page", page);
                 setPageNumber(page);
 
+            }).catch(err => {
+                console.log(err.message);
             })
     }, [currentPage]);
 
@@ -70,7 +76,7 @@ const Shop = () => {
             setCart(newCart);
         }
 
-    }, [products])
+    }, [])
 
 
     const handleSearchBar = (e) => {
@@ -87,10 +93,10 @@ const Shop = () => {
             </div>
             <div className="shop-container">
                 <div className="product-container">
-                    <h2>Products: {searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product._id} product={product}></Product>)}</h2>
+                    <h2>Products: {searchData.length > 0 && searchData.map((product, key) => <Product handleAddtoCart={handleAddtoCart} key={product._id} product={product}></Product>)}</h2>
 
                     <div className="pagination">
-                        {[...Array(pageNumber).keys()].map(num => <button
+                        {[...Array(pageNumber).keys()].map(num => <button key={num}
                             className={currentPage === num ? "selected" : "not-selected"} onClick={() => setCurrentPage(num)} style={{ marginRight: "8px" }}>{num}</button>
                         )}
                     </div>
