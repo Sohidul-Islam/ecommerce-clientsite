@@ -63,6 +63,10 @@ const Shop = () => {
 
             }).catch(err => {
                 console.log(err.message);
+                const oldData = products;
+                setSearchData(oldData)
+                setProducts(oldData)
+
             })
     }, [currentPage]);
 
