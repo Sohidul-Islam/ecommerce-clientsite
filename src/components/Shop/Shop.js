@@ -47,14 +47,19 @@ const Shop = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log("Product Recieved", data);
-                setSearchData(data.products)
-                setProducts(data.products)
-                console.log("Product Recieved");
-                const count = data.count;
-                const page = Math.ceil(count / size);
-                console.log("page", page);
-                setPageNumber(page);
+                if (data.products.length > 0) {
+                    console.log("Product Recieved", data);
+                    setSearchData(data.products)
+                    setProducts(data.products)
+                    console.log("Product Recieved");
+                    const count = data.count;
+                    const page = Math.ceil(count / size);
+                    console.log("page", page);
+                    setPageNumber(page);
+                }
+                else {
+                    console.log("No Products");
+                }
 
             }).catch(err => {
                 console.log(err.message);
