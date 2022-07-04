@@ -41,7 +41,7 @@ const Shop = () => {
     }
 
     useEffect(() => {
-        const url = `http://localhost:5000/products?page=${currentPage}&&size=${size}`;
+        const url = `https://rugged-hot-springs-18854.herokuapp.com/products?page=${currentPage}&&size=${size}`;
 
         console.log(url);
         fetch(url)

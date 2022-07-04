@@ -12,7 +12,7 @@ const Shipping = () => {
         data.order = savedItems;
         console.log("shipping: ", data)
 
-        fetch("http://localhost:5000/products/order", {
+        fetch("https://rugged-hot-springs-18854.herokuapp.com/products/order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
