@@ -2,14 +2,21 @@ import React, { useEffect, useState } from 'react';
 import useAuth from './../../Hooks/useAuth';
 import axios from "axios";
 import "./Orders.css";
+import { useNavigate } from 'react-router-dom';
 
 const Orders = () => {
     const [order, setOrder] = useState([])
+    const navigate = useNavigate();
     const { user } = useAuth();
     useEffect(() => {
 
-        axios.get('http://localhost:5000/products/order?email=' + user.email)
+        axios.get('http://localhost:5000/products/order?email=' + user.email, {
+            headers: {
+                'authorization': 'Bearer ' + localStorage.getItem('IDtoken')
+            }
+        })
             .then(res => setOrder(res.data))
+            .catch(err => navigate("/login"))
 
     }, [])
     const dataAndTimeHanlder = (dataAndTime) => {
@@ -31,7 +38,7 @@ const Orders = () => {
             <div className="order-container">
                 {
                     order.map(user =>
-                        <div className="order-card">
+                        <div key={user.createat} className="order-card">
                             <div className="order-card-header">
                                 <div className="order-card-header-status">
                                     <h3 className="order-card-header-title"><strong>Name: </strong>{user.name}</h3>
