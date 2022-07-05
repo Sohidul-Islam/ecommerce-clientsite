@@ -1,5 +1,5 @@
 import firebaseInitialization from '../Firebase/Firebase.init';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, getIdToken } from "firebase/auth";
 import React, { useEffect, useState } from 'react';
 firebaseInitialization();
 const Googleprovider = new GoogleAuthProvider();
@@ -30,6 +30,10 @@ const useFirebase = () => {
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
+                getIdToken(user).then(token => {
+                    console.log(token)
+                    localStorage.setItem('IDtoken', token);
+                })
                 setUser(user);
             }
             else {
