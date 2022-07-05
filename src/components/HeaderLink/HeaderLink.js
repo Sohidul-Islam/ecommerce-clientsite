@@ -9,6 +9,7 @@ const HeaderLink = () => {
             <Link className="nav-link" to="/shop">Shop</Link>
             <Link className="nav-link" to="/order-review">Order Review</Link>
             <Link className="nav-link" to="/manage-inventory">Manage Inventory here</Link>
+            {user?.email && <Link className="nav-link" to="/my-orders">My Orders</Link>}
 
             {user?.email && <span className="text-light">{user.displayName}</span>}
             {user?.email ? <Link className="nav-link" onClick={logout} to="/login">Logout</Link>

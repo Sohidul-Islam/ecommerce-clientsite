@@ -41,8 +41,9 @@ const Shop = () => {
     }
 
     useEffect(() => {
-        const url = `https://marvelous-dry-tortugas-02221.herokuapp.com/products?page=${currentPage}&&size=${size}`;
-
+        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
+        let url = `http://localhost:5000/`;
+        url += `products?page=${currentPage}&&size=${size}`;
         console.log(url);
         fetch(url)
             .then(res => res.json())

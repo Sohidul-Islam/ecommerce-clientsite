@@ -1,18 +1,21 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../Hooks/useAuth';
 import { deleteShoppingCart, getItemFromLocalDb } from '../../utilities/fakedb';
 import "./Shipping.css"
 
 const Shipping = () => {
     const { user } = useAuth();
+    const navigate = useNavigate();
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         const savedItems = getItemFromLocalDb();
         data.order = savedItems;
         console.log("shipping: ", data)
-
-        fetch("https://marvelous-dry-tortugas-02221.herokuapp.com/products/order", {
+        // const url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
+        const url = `http://localhost:5000/`;
+        fetch(`${url}products/order`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -24,6 +27,7 @@ const Shipping = () => {
                 if (data.insertedId) {
                     reset();
                     deleteShoppingCart();
+                    navigate("/");
                 }
 
             })

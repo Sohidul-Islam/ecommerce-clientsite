@@ -13,7 +13,9 @@ const UseCart = () => {
         const productKeys = Object.keys(addedProducts);
         console.log("productKeys", productKeys);
         let newCart = [];
-        fetch("https://marvelous-dry-tortugas-02221.herokuapp.com/products/byKeys", {
+        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
+        let url = `http://localhost:5000/`;
+        fetch(`${url}products/byKeys`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

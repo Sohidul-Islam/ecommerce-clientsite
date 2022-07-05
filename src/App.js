@@ -12,6 +12,7 @@ import AuthProvider from './context/AuthProvider';
 import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import Shipping from './components/Shipping/Shipping';
 import ProductsProvider from './context/ProductsProvider';
+import Orders from './components/Orders/Orders';
 function App() {
   return (
     <ProductsProvider>
@@ -26,6 +27,7 @@ function App() {
             <Route path="/order-review" element={<OrderReview></OrderReview>}>
             </Route>
             <Route path="/manage-inventory" element={<PrivateRouter><Inventory></Inventory></PrivateRouter>}></Route>
+            <Route path="/my-orders" element={<PrivateRouter><Orders></Orders></PrivateRouter>}></Route>
             <Route path="/placeorder" element={<PrivateRouter>
               <PlaceOrder></PlaceOrder></PrivateRouter>
             }></Route>

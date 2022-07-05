@@ -7,7 +7,9 @@ const UseProducts = () => {
     }, [])
 
     const getProducts = async () => {
-        await fetch("https://marvelous-dry-tortugas-02221.herokuapp.com/products")
+        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
+        let url = `http://localhost:5000/`;
+        await fetch(`${url}products`)
             .then(res => res.json())
             .then(data => {
                 setProducts(data.products);
