@@ -1,9 +1,9 @@
 import React from 'react';
 
 const Cart = (props) => {
-    // console.log("cart props: ", props);
     const { cart, purchase } = props;
-    const total = cart.reduce((previous, current) => previous + current.price, 0)
+    // console.log("Cart page: ", cart);
+    const total = cart.reduce((previous, current) => previous + current.price * current.quantity, 0)
     const shipping = total > 0 ? 55 : 0;
     const tax = (total + shipping) * .15;
     const grandTotal = total + shipping + tax;
@@ -12,7 +12,7 @@ const Cart = (props) => {
     }, 0);
     return (
         <div>
-            <h2><strong>Order Summery</strong></h2>
+            <h2><strong>Order Summary</strong></h2>
             <p><strong>Item Ordered:</strong> {TotalQuantity}</p>
             <p><strong>Total:</strong> {total.toFixed(2)}</p>
             <p><strong>Shipping:</strong> {shipping.toFixed(2)}</p>

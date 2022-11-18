@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { getItemFromLocalDb } from '../utilities/fakedb';
+import { getItemFromLocalDb, QuantityHandlerFromLocalDb } from '../utilities/fakedb';
 
 
 const UseCart = () => {
     const [cart, setCart] = useState([]);
 
     useEffect(() => {
-
-
         const addedProducts = getItemFromLocalDb();
-        console.log("addedProducts", addedProducts);
         const productKeys = Object.keys(addedProducts);
-        console.log("productKeys", productKeys);
         let newCart = [];
         // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
         let url = `http://localhost:5000/`;
@@ -24,18 +20,14 @@ const UseCart = () => {
         })
             .then(res => res.json())
             .then(products => {
-                console.log("Product useCart: ", products);
                 if (products.length) {
                     for (const id in addedProducts) {
                         const quantity = addedProducts[id];
                         const savedProduct = products.find(product => product._id === id);
-                        console.log("Saved product quantity: ", quantity);
-                        console.log("Saved product: ", savedProduct);
                         if (savedProduct) {
                             savedProduct.quantity = quantity;
                             newCart.push(savedProduct);
                         }
-                        console.log("cart changed ", newCart);
                     }
                     setCart(newCart);
                 }
@@ -45,7 +37,18 @@ const UseCart = () => {
             })
     }, [])
 
-    return [cart, setCart];
+
+    const handleQuantity = (id, quantity) => { // key is product id
+        const newCart = [...cart];
+        const product = newCart.find(product => product._id === id);
+        if (product) {
+            product.quantity = quantity;
+            QuantityHandlerFromLocalDb(id, quantity);
+            // setCart(newCart);
+        }
+    }
+
+    return [cart, setCart, handleQuantity];
 };
 
 export default UseCart;

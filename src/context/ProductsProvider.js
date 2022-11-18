@@ -3,7 +3,7 @@ import UseProducts from '../Hooks/UseProducts';
 export const ProductsContext = createContext();
 const ProductsProvider = ({ children }) => {
     const allProducts = UseProducts();
-    console.log("all products", allProducts);
+    // console.log("all products", allProducts);
     return (
         <div>
             <ProductsContext.Provider value={allProducts}>

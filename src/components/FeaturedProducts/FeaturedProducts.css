@@ -1,0 +1,105 @@
+.section {
+  padding: 50px 0 50px 0;
+}
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: "Poppins", sans-serif;
+}
+.feature-container {
+  margin: 0 auto;
+  max-width: 1240px;
+}
+.feature-product {
+  position: relative;
+  top: 0;
+  left: 0;
+  /* min-width: 270px; */
+  max-width: 270px;
+  /* min-height: 361px; */
+  max-height: 361px;
+  margin: 20px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.feature-product-image {
+  width: 100%;
+  height: 236px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.feature-product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: all 0.6s ease-in-out;
+}
+.feature-product-text {
+  text-align: center;
+  padding: 20px 0px;
+}
+
+.feature-product--text-1 {
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: capitalize;
+  color: #fb2e86;
+  font-family: "Josefin Sans", sans-serif;
+}
+.feature-product--text-2 {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: #000;
+  font-family: "Poppins", sans-serif;
+}
+.feature-btn--box {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  align-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(50px);
+  transition: all 0.5s ease-in-out;
+}
+.feature-product--btn {
+  padding: 16px 40px;
+  background-color: #fb2e86;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  transition: all 0.8s ease-in-out;
+  text-decoration: none;
+}
+.feature-product--btn:hover {
+  background-color: #fff;
+  color: #fb2e86;
+  border: 1px solid #fb2e86;
+}
+
+.feature-product:hover .feature-btn--box {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0px);
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 100%;
+}
+.feature-product:hover .feature-product-image img {
+  filter: blur(5px);
+}

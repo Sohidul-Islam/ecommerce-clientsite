@@ -1,0 +1,25 @@
+.brand-container{
+    width:100%;
+    /* margin:0px 5%; */
+}
+.brand-container-box{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.brand-img-box{
+    padding:1%; 
+    /* width: 200px; */
+    width: calc((100%)/7);
+    height: 80px;
+    border: 1px solid #e5e5e5;
+}
+.brand-img-box img{
+    /* text-align: center; */
+    width:80%;
+    height:60%;
+    margin:5% 10%;
+}

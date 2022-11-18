@@ -31,7 +31,7 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 getIdToken(user).then(token => {
-                    console.log(token)
+                    // console.log(token)
                     localStorage.setItem('IDtoken', token);
                 })
                 setUser(user);

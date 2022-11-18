@@ -13,6 +13,11 @@ import PrivateRouter from './components/PrivateRouter/PrivateRouter';
 import Shipping from './components/Shipping/Shipping';
 import ProductsProvider from './context/ProductsProvider';
 import Orders from './components/Orders/Orders';
+import Home from './components/Home/Home';
+import Home2 from './components/Home2/Home';
+import Dashboard from './components/DashBoard/Dashboard';
+import InventoryProducts from './components/InventoryProducts/InventoryProducts';
+import InventoryOrder from './components/InventoryOrder/InventoryOrder';
 function App() {
   return (
     <ProductsProvider>
@@ -20,13 +25,18 @@ function App() {
         <BrowserRouter>
           <Header></Header>
           <Routes>
-            <Route exact path="/" element={<Shop></Shop>}>
+            <Route exact path="/" element={<Home2></Home2>}>
+              {/* <Route exact path="/" element={<Home></Home>}> */}
             </Route>
             <Route path="/shop" element={<Shop></Shop>}>
             </Route>
             <Route path="/order-review" element={<OrderReview></OrderReview>}>
             </Route>
-            <Route path="/manage-inventory" element={<PrivateRouter><Inventory></Inventory></PrivateRouter>}></Route>
+            <Route path="/manage-inventory" element={<PrivateRouter><Inventory></Inventory></PrivateRouter>}>
+              <Route path={``} element={<Dashboard />} />
+              <Route path={`products`} element={<InventoryProducts />} />
+              <Route path={`orders`} element={<InventoryOrder />} />
+            </Route>
             <Route path="/my-orders" element={<PrivateRouter><Orders></Orders></PrivateRouter>}></Route>
             <Route path="/placeorder" element={<PrivateRouter>
               <PlaceOrder></PlaceOrder></PrivateRouter>

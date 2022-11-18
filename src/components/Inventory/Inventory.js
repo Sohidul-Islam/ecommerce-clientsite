@@ -1,9 +1,12 @@
 import React from 'react';
+import Dashboard from '../DashBoard/Dashboard';
+import InventoryProducts from '../InventoryProducts/InventoryProducts';
 
 const Inventory = () => {
     return (
         <div>
-            <h2>This is Inventory Page</h2>
+            <Dashboard />
+            {/* <InventoryProducts /> */}
         </div>
     );
 };

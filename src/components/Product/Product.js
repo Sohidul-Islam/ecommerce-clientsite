@@ -5,7 +5,6 @@ import "./Product.css"
 import Rating from 'react-rating';
 // const element = <FontAwesomeIcon icon={faCoffee} />
 const Product = (props) => {
-    // console.log(props);
     const { _id, name, price, seller, img, stock, ratings, quantity } = props.product;
     return (
         <div className="product slit-in-vertical">

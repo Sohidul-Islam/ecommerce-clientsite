@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,600;1,700;1,800&display=swap");
+/* josef sans */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap");
+.carousel-content--box {
+  border-radius: 5px;
+  /* padding: 20px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.carousel-content {
+  height: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#carousel-partition-1 {
+  width: 30%;
+  margin-left: 20%;
+}
+#carousel-partition-2 {
+  width: 50%;
+}
+
+.carousel-text1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fb2e86;
+  font-family: "Poppins", sans-serif;
+}
+.carousel-text2 {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #000;
+  font-family: "Josefin Sans", sans-serif;
+}
+.carousel-text3 {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #8a8fb9;
+  font-family: "Poppins", sans-serif;
+}
+.secondary-btn {
+  padding: 16px 40px;
+  background-color: #fb2e86;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+}
+.secondary-btn:hover {
+  background-color: #fff;
+  color: #fb2e86;
+  border: 1px solid #fb2e86;
+}
+
+.carousel-text-container {
+  width: 100%;
+}
+
+.slick-dots {
+  bottom: 20px;
+}
+
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 16px;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid #fb2e86;
+  transform: rotate(45deg);
+}
+
+li.slick-active {
+  background: #fb2e86;
+}
+
+.slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #fb2e86;
+}
+.slick-dots li button:before {
+  font-family: "slick";
+  font-size: 6px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: "";
+  text-align: center;
+  opacity: 0.25;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

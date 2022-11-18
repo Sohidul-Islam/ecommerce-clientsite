@@ -1,0 +1,42 @@
+.quantity-box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0 0 10px;
+  padding: 0;
+  width: 100%;
+}
+
+.quantity-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.quantity-input {
+  width: 60px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.quantity-input {
+  -moz-appearance: textfield;
+}
