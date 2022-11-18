@@ -18,6 +18,7 @@ import Home2 from './components/Home2/Home';
 import Dashboard from './components/DashBoard/Dashboard';
 import InventoryProducts from './components/InventoryProducts/InventoryProducts';
 import InventoryOrder from './components/InventoryOrder/InventoryOrder';
+import InventoryUser from './components/InventoryUser/InventoryUser';
 function App() {
   return (
     <ProductsProvider>
@@ -36,6 +37,7 @@ function App() {
               <Route path={``} element={<Dashboard />} />
               <Route path={`products`} element={<InventoryProducts />} />
               <Route path={`orders`} element={<InventoryOrder />} />
+              <Route path={`users`} element={<InventoryUser />} />
             </Route>
             <Route path="/my-orders" element={<PrivateRouter><Orders></Orders></PrivateRouter>}></Route>
             <Route path="/placeorder" element={<PrivateRouter>

@@ -87,13 +87,13 @@ const VerticalMenu = () => {
 
     return (
         <div>
-            <div className={className} onClick={MenuHandler}>
+            <div className={className}>
                 <VerticalMenuItem>
                     {/* <Button onClick={MenuHandler}>
                         <FontAwesomeIcon icon={faBars} style={{ fontSize: "24px" }} />
                     </Button>
                     <br /> */}
-                    <VerticalMenuHeader>
+                    <VerticalMenuHeader onClick={MenuHandler}>
                         {isClicked ? <img src={logo} style={{ width: "100%", margin: "0px auto" }} alt="logo" />
                             : <img src={logo2} style={{ width: "100%", margin: "0px auto" }} alt="logo" />}
                     </VerticalMenuHeader>
