@@ -87,7 +87,7 @@ const Carousel = () => {
 
                                     </div>
                                     <div className="carousel-content" id="carousel-partition-2">
-                                        <img src={banner.highlightImage} alt="" style={{ width: "90%", paddingRight: "10%" }} />
+                                        <img src={banner.highlightImage} alt="" style={{ width: "80%", marginRight: "20%" }} />
                                     </div>
                                 </div>
                             </div>

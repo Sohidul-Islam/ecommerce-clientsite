@@ -103,19 +103,6 @@ button:focus {
 .ti-pinterest:before {
   content: "\e731";
 }
-/* 
-.btn_get_two {
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  background: #5e2ced;
-  border-color: #5e2ced;
-  color: #fff;
-}
-
-.btn_get_two:hover {
-  background: transparent;
-  color: #5e2ced;
-} */
 
 .btn_get_two {
   padding: 16px 40px;

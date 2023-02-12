@@ -12,6 +12,7 @@ import bagFeature from '../../images/artwork/bag.png'
 import bottleFeature from '../../images/artwork/bottle.png'
 import { Link } from 'react-router-dom';
 import { addCategoryToDb } from '../../utilities/fakedb';
+import styled from 'styled-components';
 
 const FeaturedProducts = () => {
     const settings = {
@@ -92,14 +93,21 @@ const FeaturedProducts = () => {
     }
 
 
+    const FeatureSlider = styled(Slider)`
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    `
+
+
     return (
         <div className="section">
             <h1 className="title">Featured Products</h1>
             <div id="featured-products">
                 <div className="feature-container">
-                    <Slider {...settings}>
+                    <FeatureSlider {...settings}>
                         {featureProducts.map((banner, key) => (
-                            <div keys="key" >
+                            <div keys={key} className="feature-contents" >
                                 <div className="feature-product">
                                     <div className="feature-product-image">
                                         <img src={banner.highlightImage} alt="" />
@@ -123,7 +131,7 @@ const FeaturedProducts = () => {
                             </div>
                         ))}
 
-                    </Slider>
+                    </FeatureSlider>
                 </div>
             </div>
 

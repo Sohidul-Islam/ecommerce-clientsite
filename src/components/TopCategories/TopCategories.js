@@ -41,7 +41,7 @@ const TopCategories = () => {
             {
                 breakpoint: 480,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1
                 }
             }
@@ -105,6 +105,13 @@ const TopCategories = () => {
         color: #fb2e86;
         border: 1px solid #fb2e86;
     }
+
+    @media (max-width: 480px) {
+        padding: 8px 16px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      
       `;
 
     const ImgBox = styled.div`

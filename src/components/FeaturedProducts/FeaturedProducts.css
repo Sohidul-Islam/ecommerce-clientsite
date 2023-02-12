@@ -1,6 +1,12 @@
 .section {
   padding: 50px 0 50px 0;
 }
+
+@media (max-width: 480px) {
+  .section {
+    padding: 20px 0 20px 0;
+  }
+}
 .title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -102,4 +108,12 @@
 }
 .feature-product:hover .feature-product-image img {
   filter: blur(5px);
+}
+
+@media (max-width: 480px) {
+  .feature-contents {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+  }
 }

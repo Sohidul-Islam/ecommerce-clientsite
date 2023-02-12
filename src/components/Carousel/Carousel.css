@@ -3,7 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&display=swap");
 .carousel-content--box {
   border-radius: 5px;
-  /* padding: 20px; */
   position: absolute;
   top: 0;
   left: 0;
@@ -131,4 +130,49 @@ li.slick-active {
   color: black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+@media (max-width: 1024px) {
+  .carousel-text1 {
+    font-size: 1.4vw;
+    font-weight: 600;
+    color: #fb2e86;
+    font-family: "Poppins", sans-serif;
+  }
+  .carousel-text2 {
+    font-size: 2vw;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #000;
+    font-family: "Josefin Sans", sans-serif;
+  }
+  .carousel-text3 {
+    font-size: 1.4vw;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #8a8fb9;
+    font-family: "Poppins", sans-serif;
+  }
+}
+@media (max-width: 768px) {
+  #carousel-partition-1 {
+    width: 30%;
+    margin-left: 20%;
+  }
+  #carousel-partition-2 {
+    width: 50%;
+  }
+  .carousel-text1 {
+    font-size: 2vw;
+  }
+  .carousel-text2 {
+    font-size: 3vw;
+  }
+  .carousel-text3 {
+    display: none;
+  }
+  .secondary-btn {
+    padding: 8px 8px;
+    font-size: 3vw;
+  }
 }

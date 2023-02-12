@@ -62,13 +62,20 @@ const FacilitiesOffer = () => {
 
     const FaciliitiesContainerBox = styled.div`
         display: flex;
+        // flex-direction: column;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: center;
         margin: 0 auto;
         max-width: 1200px;
-        @media ${device2.mobileL}{
-            flex-direction: row;
+        @media ${device2.tablet}{
+            
+            flex-direction: row !important;
             justify-content:center;
+            align-items
+
+            & h1{
+                font-size: 16px;
+            }
         }
     `;
 
@@ -152,7 +159,7 @@ const FacilitiesOffer = () => {
 
     return (
         <div style={{ marginBottom: "50px" }}>
-            <h1>What Ema John Offers!</h1>
+            <h1 style={{ textAlign: "center" }}>What Ema John Offers!</h1>
             <FaciliitiesContainerBox>
                 {facilities.map((facility, key) => (
                     <FaciliitiesContainer>

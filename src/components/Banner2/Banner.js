@@ -109,9 +109,10 @@ justify-content: start;
 
     const BacgroundImage = styled.img` 
     width: 100%;
-    // height: 700px;
-
     @media ${device2.desktopL}{
+        height: auto;
+    }
+    @media ${device2.laptop}{
         height: 500px;
     }
     @media ${device2.mobileL}{
