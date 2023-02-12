@@ -9,6 +9,7 @@ import teeShirtHighlight2 from '../../images/artwork/teeshirt1.png'
 import bagHighlight3 from '../../images/artwork/bag1.png'
 import { Link } from 'react-router-dom';
 import { addCategoryToDb } from '../../utilities/fakedb';
+import styled from 'styled-components';
 
 const Carousel = () => {
     const settings = {
@@ -51,6 +52,12 @@ const Carousel = () => {
         console.log(category)
         addCategoryToDb(category)
     }
+
+
+    const Title = styled.p`
+    
+    
+    `;
 
     return (
         <div>

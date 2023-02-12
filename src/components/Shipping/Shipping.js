@@ -13,8 +13,8 @@ const Shipping = () => {
     const onSubmit = data => {
         const savedItems = getItemFromLocalDb();
         data.order = savedItems;
-        // const url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
-        const url = `http://localhost:5000/`;
+        // const url = `https://node-express-mongo-react-server.vercel.app/`;
+        const url = `http://node-express-mongo-react-server.vercel.app/`;
         fetch(`${url}products/order`, {
             method: "POST",
             headers: {

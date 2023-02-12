@@ -18,7 +18,7 @@ const Orders = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
     useEffect(() => {
-        axios.get('http://localhost:5000/products/order?email=' + user.email, {
+        axios.get('http://node-express-mongo-react-server.vercel.app/products/order?email=' + user.email, {
             headers: {
                 'authorization': 'Bearer ' + localStorage.getItem('IDtoken')
             }
@@ -130,7 +130,7 @@ const Orders = () => {
     }
     return (
         <div className="order-container-box">
-            <h2> You Ordered {order.length} Items</h2>
+            <h2> You Ordered {order.length} Times</h2>
             <div className="order-container">
                 {
                     order.slice(0).reverse().map(user =>

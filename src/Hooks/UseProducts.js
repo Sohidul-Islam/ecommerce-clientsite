@@ -7,8 +7,8 @@ const UseProducts = () => {
     }, [])
 
     const getProducts = async () => {
-        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
-        let url = `http://localhost:5000/`;
+        // let url = `https://node-express-mongo-react-server.vercel.app/`;
+        let url = `http://node-express-mongo-react-server.vercel.app/`;
         await fetch(`${url}products`)
             .then(res => res.json())
             .then(data => {

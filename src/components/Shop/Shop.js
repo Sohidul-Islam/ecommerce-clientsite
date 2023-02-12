@@ -36,9 +36,9 @@ const Shop = () => {
         addToDb(product._id)
     }
     useEffect(() => {
-        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
-        
-        let url = `http://localhost:5000/`;
+        // let url = `https://node-express-mongo-react-server.vercel.app/`;
+
+        let url = `http://node-express-mongo-react-server.vercel.app/`;
         url += `product/categories`;
         console.log(url);
         fetch(url)
@@ -52,23 +52,23 @@ const Shop = () => {
     }, [])
 
     useEffect(() => {
-        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
+        // let url = `https://node-express-mongo-react-server.vercel.app/`;
         let category = JSON.parse(localStorage.getItem('category'));
         let tmpCategory;
-        
-        console.log(category,"choosen");
 
-         for(let x in category){
-            if(category[x]===1){
+        console.log(category, "choosen");
+
+        for (let x in category) {
+            if (category[x] === 1) {
                 tmpCategory = x;
-                category[x]=0;
+                category[x] = 0;
             }
-         }
-         console.log(tmpCategory===1,"is equalt to 1");
-        
+        }
+        console.log(tmpCategory === 1, "is equalt to 1");
 
-        let url = `http://localhost:5000/`;
-        if(tmpCategory){
+
+        let url = `http://node-express-mongo-react-server.vercel.app/`;
+        if (tmpCategory) {
             url += `products?page=${currentPage}&&size=${size}&&category=${tmpCategory}`;
             setSelectedCategories(tmpCategory);
         }
@@ -137,9 +137,9 @@ const Shop = () => {
     }
 
     const handleCategory = (category) => {
-        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
+        // let url = `https://node-express-mongo-react-server.vercel.app/`;
         setSelectedCategories(category);
-        // let url = `http://localhost:5000/`;
+        // let url = `http://node-express-mongo-react-server.vercel.app/`;
         // if (category !== "All") {
         //     url += `product/categories/category?category=${category}`;
         //     console.log(url);

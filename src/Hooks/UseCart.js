@@ -9,8 +9,8 @@ const UseCart = () => {
         const addedProducts = getItemFromLocalDb();
         const productKeys = Object.keys(addedProducts);
         let newCart = [];
-        // let url = `https://marvelous-dry-tortugas-02221.herokuapp.com/`;
-        let url = `http://localhost:5000/`;
+        // let url = `https://node-express-mongo-react-server.vercel.app/`;
+        let url = `http://node-express-mongo-react-server.vercel.app/`;
         fetch(`${url}products/byKeys`, {
             method: "POST",
             headers: {

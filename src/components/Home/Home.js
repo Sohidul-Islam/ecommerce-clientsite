@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <div className="banner-container">
                 <Banner />
-                <Brand/>
+                <Brand />
                 <Gallery text="Boot" category="Men's Boot" />
                 <Gallery text="Cap" category="Cap" />
                 <Gallery text="Tee shirt" category="Tee Shirt" />

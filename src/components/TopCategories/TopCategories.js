@@ -163,7 +163,7 @@ const TopCategories = () => {
                         {
 
                             topCategories.map((banner, key) => (
-                                <div keys="key" >
+                                <div keys={key} >
                                     <TopCategoriesCard>
                                         <ImgBox>
                                             <Img src={banner.highlightImage} alt="" />
