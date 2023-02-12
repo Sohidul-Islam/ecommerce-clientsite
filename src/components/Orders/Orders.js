@@ -94,22 +94,19 @@ const Orders = () => {
     //     quantity: 3,
     // }];
 
-    const columns = [{
-        text: 'Product ID',
-    },
-    {
-        text: 'Product',
-    }, {
-        text: 'Product Name',
-    }, {
-        text: 'qty',
-    }, {
-        text: 'Product Price',
-    },
-
-    {
-        text: 'Total Price',
-    }
+    const columns = [
+        {
+            text: 'Item',
+        }, {
+            text: 'Name',
+        }, {
+            text: 'qty',
+        }, {
+            text: 'Price',
+        },
+        {
+            text: 'Total Price',
+        }
     ];
 
     // const col = window.innerWidth > 600 ? columns : columns.slice(1, 4);
@@ -130,9 +127,9 @@ const Orders = () => {
     }
     return (
         <div className="order-container-box">
-            <h2> You Ordered {order.length} Times</h2>
+            <h2 style={{ margin: "16px", }}> You Ordered {order.length} Times</h2>
             <div className="order-container">
-                {
+                {order.length > 0 ?
                     order.slice(0).reverse().map(user =>
                         <div key={user.createat} className="order-card">
                             <div className="order-card-header">
@@ -152,14 +149,14 @@ const Orders = () => {
                             <hr />
                             {/* <BootstrapTable keyField='id' data={tableDataHandler(user?.order)} columns={columns} filter={filterFactory()} /> */}
 
-                            <table class="responstable">
+                            <table class="responstable" style={{ overflowX: "scroll" }}>
 
                                 <tr>
                                     {columns.map(column => <th>{column.text}</th>)}
                                 </tr>
                                 {tableDataHandler(user?.order)[0].map(data =>
                                     <tr>
-                                        <td>{data._id}</td>
+                                        {/* <td>{data._id}</td> */}
                                         <td>{data.img}</td>
                                         <td>{data.name}</td>
                                         <td>{data.quantity}</td>
@@ -185,7 +182,9 @@ const Orders = () => {
                                 </div>
                             )}
                         </div>
-                    )
+                    ) : <div className="spinner-grow" style={{ width: "10rem", height: "10rem", margin: "25% 25%" }} role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
                 }
             </div>
         </div>
